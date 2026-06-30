@@ -1,4 +1,4 @@
-# Homebrew Tap for IME
+# Homebrew Tap for La Fong IME
 
 This tap publishes the macOS fcitx5 package as a Homebrew Cask.
 
@@ -44,6 +44,6 @@ brew zap --cask ime-fcitx5
 ## User Install
 
 ```bash
-brew tap billy948787/ime
+brew tap billy948787/la-fong
 brew install --cask ime-fcitx5
 ```
