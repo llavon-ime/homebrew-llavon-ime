@@ -15,6 +15,19 @@ cask "fcitx5-macos" do
 
   artifact "Fcitx5.app", target: "/Library/Input Methods/Fcitx5.app"
 
+  preflight do
+    system_command "/usr/bin/pkill",
+                   args:         ["-x", "Fcitx5"],
+                   must_succeed: false,
+                   sudo:         true
+
+    if File.exist?("/Library/Input Methods/Fcitx5.app")
+      system_command "/bin/rm",
+                     args: ["-rf", "/Library/Input Methods/Fcitx5.app"],
+                     sudo: true
+    end
+  end
+
   uninstall quit:   "org.fcitx.inputmethod.Fcitx5",
             delete: "/Library/Input Methods/Fcitx5.app"
 
