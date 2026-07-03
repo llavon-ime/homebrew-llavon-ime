@@ -49,5 +49,7 @@ brew zap --cask llavon-ime
 
 ```bash
 brew tap llavon-ime/llavon-ime
+brew trust --cask llavon-ime/llavon-ime/fcitx5-macos
+brew trust --cask llavon-ime/llavon-ime/llavon-ime
 brew install --cask llavon-ime
 ```
