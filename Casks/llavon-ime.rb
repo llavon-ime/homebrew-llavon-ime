@@ -1,6 +1,6 @@
 cask "llavon-ime" do
   version "0.1.0"
-  sha256 "REPLACE_WITH_SHA256"
+  sha256 "0d084aedbe9b868b5c8b9a27d5d55916cf0ad7a36bb744b279f8a6fef59d3ea7"
 
   url "https://github.com/llavon-ime/IME/releases/download/v#{version}/llavon-ime-#{version}-arm64.pkg",
       verified: "github.com/llavon-ime/IME/"
