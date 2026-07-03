@@ -1,8 +1,10 @@
 # Homebrew Tap for Llavon IME
 
-This tap publishes the macOS fcitx5 package as a Homebrew Cask.
+This tap publishes Llavon IME and its fcitx5-macos runtime dependency as Homebrew Casks.
 
 The `Casks/llavon-ime.rb` version and sha256 are normally updated automatically by the IME repository's `Release macOS package` GitHub Actions workflow when a `v*` tag is pushed.
+
+`Casks/fcitx5-macos.rb` tracks the signed upstream fcitx5-macos release and is installed automatically as a dependency of `llavon-ime`.
 
 ## Release Steps
 
@@ -36,8 +38,10 @@ sha256 "<hash>"
 ## Local Test
 
 ```bash
+brew install --cask ./Casks/fcitx5-macos.rb
 brew install --cask ./Casks/llavon-ime.rb
 brew uninstall --cask llavon-ime
+brew uninstall --cask fcitx5-macos
 brew zap --cask llavon-ime
 ```
 

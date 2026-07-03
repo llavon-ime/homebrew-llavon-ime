@@ -5,15 +5,17 @@ cask "llavon-ime" do
   url "https://github.com/llavon-ime/IME/releases/download/v#{version}/llavon-ime-#{version}-arm64.pkg",
       verified: "github.com/llavon-ime/IME/"
   name "拉風輸入法"
-  desc "Llavon IME for fcitx5-macos"
+  desc "Chinese input method for Fcitx5"
   homepage "https://github.com/llavon-ime/IME"
 
-  depends_on macos: ">= :ventura"
+  depends_on cask: "fcitx5-macos"
+  depends_on macos: :ventura
+  depends_on arch: :arm64
 
   pkg "llavon-ime-#{version}-arm64.pkg"
 
   uninstall pkgutil: "llavon-ime",
-            delete: "/Library/Application Support/llavon-ime"
+            delete:  "/Library/Application Support/llavon-ime"
 
   zap trash: [
     "~/Library/fcitx5/bin/llavon-ime-service",
