@@ -8,7 +8,6 @@ cask "llavon-ime" do
   desc "Chinese input method for Fcitx5"
   homepage "https://github.com/llavon-ime/IME"
 
-  depends_on cask: "fcitx5-macos"
   depends_on macos: :ventura
   depends_on arch: :arm64
 
