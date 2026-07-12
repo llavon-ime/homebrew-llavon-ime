@@ -1,12 +1,12 @@
 cask "llavon-ime" do
-  version "0.1.0"
-  sha256 "0d084aedbe9b868b5c8b9a27d5d55916cf0ad7a36bb744b279f8a6fef59d3ea7"
+  version "0.2.0"
+  sha256 "7ddbc52e111066d0d61f6ef4d65f4eb8bd00f2fb31ceea09ca3fd0720e616c7a"
 
-  url "https://github.com/llavon-ime/IME/releases/download/v#{version}/llavon-ime-#{version}-arm64.pkg",
-      verified: "github.com/llavon-ime/IME/"
+  url "https://github.com/llavon-ime/ime-fcitx5/releases/download/v#{version}/llavon-ime-#{version}-arm64.pkg",
+      verified: "github.com/llavon-ime/ime-fcitx5/"
   name "拉風輸入法"
   desc "Chinese input method for Fcitx5"
-  homepage "https://github.com/llavon-ime/IME"
+  homepage "https://github.com/llavon-ime/ime-fcitx5"
 
   depends_on macos: :ventura
   depends_on arch: :arm64
