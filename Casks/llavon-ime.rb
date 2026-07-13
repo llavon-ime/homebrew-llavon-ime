@@ -1,6 +1,6 @@
 cask "llavon-ime" do
-  version "0.2.1"
-  sha256 "02e62cd120c77f59e929fa1f50675a6375eacb6ff563f6cf42b2060962716c41"
+  version "0.2.2"
+  sha256 "cdbef220e3f0178de35f3362e0bc6a06f958733b652f3ce2a1e9b35bfc460946"
 
   url "https://github.com/llavon-ime/ime-fcitx5/releases/download/v#{version}/llavon-ime-#{version}-arm64.pkg",
       verified: "github.com/llavon-ime/ime-fcitx5/"
