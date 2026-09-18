@@ -41,7 +41,21 @@ brew uninstall --cask llavon-ime
 brew zap --cask llavon-ime
 ```
 
-## 使用者安裝（一鍵安裝，建議）
+## 使用者安裝（一鍵安裝）
+
+以下兩種方式都會一併安裝小企鵝輸入法（Fcitx5）、拉風輸入法與模型，並自動啟用輸入法及加入 macOS 輸入來源。
+
+### 方法一：Homebrew
+
+```bash
+brew tap llavon-ime/llavon-ime
+brew trust --cask llavon-ime/llavon-ime/llavon-ime
+brew install --cask llavon-ime
+```
+
+安裝過程會要求輸入管理員密碼。
+
+### 方法二：手動下載
 
 1. 到 <https://github.com/llavon-ime/ime-fcitx5/releases/latest> 下載 `llavon-ime-installer-<版本>-arm64.zip`。
 

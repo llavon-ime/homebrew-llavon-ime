@@ -14,7 +14,10 @@ cask "llavon-ime" do
   pkg "llavon-ime-#{version}-arm64.pkg"
 
   uninstall pkgutil: "llavon-ime",
-            delete:  "/Library/Application Support/llavon-ime"
+            delete:  [
+              "/Library/Application Support/llavon-ime",
+              "/Library/Input Methods/Fcitx5.app",
+            ]
 
   zap trash: [
     "~/Library/fcitx5/bin/llavon-ime-service",
