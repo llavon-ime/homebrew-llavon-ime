@@ -18,11 +18,11 @@ cask "llavon-ime" do
 
   zap trash: [
     "~/Library/fcitx5/bin/llavon-ime-service",
+    "~/Library/fcitx5/bin/llavon-ime-unix-service",
     "~/Library/fcitx5/lib/fcitx5/llavon-ime-addon.so",
     "~/Library/fcitx5/plugin/llavon-ime.json",
     "~/Library/fcitx5/share/fcitx5/addon/llavon-ime.conf",
     "~/Library/fcitx5/share/fcitx5/inputmethod/llavon-ime.conf",
-    "~/Library/fcitx5/share/llavon-ime/tables/bopomofo_char.json",
-    "~/Library/fcitx5/share/llavon-ime/tables/tokens",
+    "~/Library/fcitx5/share/llavon-ime",
   ]
 end
