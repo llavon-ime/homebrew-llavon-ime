@@ -56,3 +56,12 @@ brew install --cask llavon-ime
 完成後即可在右上角選單列切換小企鵝輸入法。若小企鵝沒有出現在輸入法選單，請到「系統設定 → 鍵盤 → 輸入法」將它移除後重新加入。
 
 也可以到 <https://github.com/llavon-ime/ime-fcitx5/releases/latest> 直接下載 `llavon-ime-<版本>-arm64.pkg` 安裝；未簽名，若被 Gatekeeper 阻擋請右鍵選擇「打開」。
+
+## 更新
+
+```bash
+brew update
+brew upgrade --cask llavon-ime
+```
+
+更新會重新安裝內附的小企鵝輸入法（Fcitx5）與拉風輸入法，設定與詞彙會保留，不需要登出。若 `brew upgrade` 顯示已是最新版本，可先執行 `brew update` 重新整理 tap，或執行 `brew reinstall --cask llavon-ime` 強制重新安裝目前版本。
