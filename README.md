@@ -18,7 +18,7 @@ brew install --cask llavon-ime
 
 安裝完成後到「系統設定 › 鍵盤 › 輸入方式」加入「拉風輸入法」，macOS 會詢問是否允許這個第三方輸入法。**首次安裝請登出再登入（或重新開機）**，輸入來源才會出現。
 
-也可以到 <https://github.com/llavon-ime/ime-fcitx5/releases/latest> 直接下載 `llavon-ime-<版本>-arm64.pkg` 安裝；未簽名，若被 Gatekeeper 阻擋請右鍵選擇「打開」。
+也可以到 <https://github.com/llavon-ime/ime-unix/releases/latest> 直接下載 `llavon-ime-<版本>-arm64.pkg` 安裝；未簽名，若被 Gatekeeper 阻擋請右鍵選擇「打開」。
 
 ## 更新
 
