@@ -1,6 +1,6 @@
 cask "llavon-ime" do
-  version "0.8.10"
-  sha256 "c8e03cdfd2590defd1e9fd269fff07cb35daf46c05878537338a15f80319f0ea"
+  version "0.9.0"
+  sha256 "c1212c508c70f927644e5a0a9f3d62e0314cad4807a85a8d483256c2f596dbd7"
 
   url "https://github.com/llavon-ime/ime-unix/releases/download/v#{version}/llavon-ime-#{version}-arm64.pkg",
       verified: "github.com/llavon-ime/ime-unix/"
