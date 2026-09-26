@@ -1,10 +1,15 @@
-# Homebrew Tap for Llavon IME
+# 拉風輸入法 Homebrew Tap
 
-This tap publishes the native macOS 「拉風輸入法」 (Llavon IME) as a Homebrew Cask.
+這個 Homebrew Tap 提供拉風輸入法（Llavon IME）的 macOS Cask。
 
-The `Casks/llavon-ime.rb` version and sha256 are normally updated automatically by the IME repository's `Release macOS package` GitHub Actions workflow when a `v*` tag is pushed.
+拉風輸入法是一套專為繁體中文注音輸入打造的輸入法。它使用約 2.5 億參數的語言模型，根據前文與注音內容預測更合適的文字，同時確保候選字符合輸入的讀音。
 
-## 使用者安裝（一鍵安裝）
+所有輸入內容與模型推論都在電腦本機完成，不需要連線至雲端，也不會為了選字而上傳正在輸入的文字。
+
+> [!IMPORTANT]
+> 本專案仍在早期開發階段，功能、操作方式及安裝流程都可能變動。目前 Homebrew Cask 僅支援 Apple Silicon Mac。
+
+## 安裝
 
 ```bash
 brew tap llavon-ime/llavon-ime
@@ -12,13 +17,28 @@ brew trust --cask llavon-ime/llavon-ime/llavon-ime
 brew install --cask llavon-ime
 ```
 
-安裝過程會要求管理員密碼，會安裝原生「拉風輸入法」、注音表、模型與 AI 預測服務，並自動向系統註冊輸入來源。
+安裝過程會要求管理員密碼，並安裝：
 
-若偵測到舊版安裝包留下的 Fcitx5 輸入法（fcitx5-macos），安裝程式會**先跳出對話框詢問是否一併移除**：只有選擇「移除」才會刪除 Fcitx5.app 與它的附加元件；選擇「保留」、關閉對話框或沒有人回應時都不會刪除。
+- 原生 macOS「拉風輸入法」
+- 注音表
+- 本機 GGUF 模型
+- AI 預測服務
 
-安裝完成後到「系統設定 › 鍵盤 › 輸入方式」加入「拉風輸入法」，macOS 會詢問是否允許這個第三方輸入法。**首次安裝請登出再登入（或重新開機）**，輸入來源才會出現。
+安裝程式會向 macOS 註冊輸入來源。
 
-也可以到 <https://github.com/llavon-ime/ime-unix/releases/latest> 直接下載 `llavon-ime-<版本>-arm64.pkg` 安裝；未簽名，若被 Gatekeeper 阻擋請右鍵選擇「打開」。
+若系統中仍有早期 Fcitx5 版本留下的檔案，安裝程式會詢問是否一併移除。只有明確選擇移除時才會刪除 Fcitx5.app 與相關元件。
+
+### 啟用輸入法
+
+安裝完成後，可前往：
+
+**系統設定 → 鍵盤 → 輸入方式**
+
+加入「拉風輸入法」。
+
+macOS 26（Tahoe）對第三方輸入來源的啟用方式有所變更，第一次安裝時需要由「系統設定」手動加入；較舊版本通常可由安裝程式完成註冊與啟用。
+
+也可以直接從 [ime-unix Releases](https://github.com/llavon-ime/ime-unix/releases/latest) 下載 `llavon-ime-<版本>-arm64.pkg` 安裝。
 
 ## 更新
 
@@ -27,31 +47,52 @@ brew update
 brew upgrade --cask llavon-ime
 ```
 
-設定（`~/.config/llavon-ime/`）與替代詞彙會保留。升級時如果 Fcitx5 還在，會再次詢問是否移除。
+更新時會保留 `~/.config/llavon-ime/` 中的設定與替代詞彙。
 
-## 移除
+## 解除安裝
+
+移除輸入法：
 
 ```bash
 brew uninstall --cask llavon-ime
+```
+
+若也要刪除使用者設定與舊版 Fcitx5 安裝留下的檔案：
+
+```bash
 brew zap --cask llavon-ime
 ```
 
-`brew uninstall` 移除拉風輸入法本體與 `/Library/Application Support/llavon-ime`。Fcitx5 是否移除由安裝時的詢問決定，不會跟著被刪除；`brew zap` 另外清掉 `~/.config/llavon-ime` 與舊版 fcitx5 留下的檔案。
+`brew uninstall` 會移除拉風輸入法本體以及 `/Library/Application Support/llavon-ime`。
 
-## Release Steps
+`brew zap` 會另外清除 `~/.config/llavon-ime` 與早期 Fcitx5 版本留下的 Llavon IME 檔案。
 
-通常不需要手動更新：`v*` tag 推到 `main` 後，IME 儲存庫的 `Release macOS package` workflow 會建置 pkg、發布 release，並自動更新此 tap 的 `version` 與 `sha256`。
+## 專案來源
 
-手動建置時：
+macOS 輸入法、預測服務與發行套件的原始碼位於：
+
+[llavon-ime/ime-unix](https://github.com/llavon-ime/ime-unix)
+
+模型相關資訊：
+
+[llavon-ime-llama-250m-GGUF](https://huggingface.co/tony65535/llavon-ime-llama-250m-GGUF)
+
+## 維護者資訊
+
+`Casks/llavon-ime.rb` 的 `version` 與 `sha256` 通常由 `ime-unix` 的 macOS release workflow 自動更新。
+
+建立 `v*` release 時，workflow 會建置 macOS pkg、發布 GitHub Release，並更新這個 Tap。
+
+若需要手動更新，可先建立套件並計算 SHA-256：
 
 ```bash
 ./scripts/package-macos.sh
 shasum -a 256 dist/macos/llavon-ime-<版本>-arm64.pkg
 ```
 
-再把 `version` 與 `sha256` 填進 `Casks/llavon-ime.rb`。
+再更新 `Casks/llavon-ime.rb` 中的 `version` 與 `sha256`。
 
-## Local Test
+### 本機測試
 
 ```bash
 brew install --cask ./Casks/llavon-ime.rb
